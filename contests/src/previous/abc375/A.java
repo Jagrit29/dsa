@@ -1,4 +1,4 @@
-package previous.Abc375;
+package previous.abc375;
 
 import java.util.Scanner;
 

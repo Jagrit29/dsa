@@ -1,3 +1,5 @@
+package previous.abc376;
+
 
 import java.util.*;
 
@@ -11,7 +13,7 @@ class Pair {
     }
 }
 
-public class Main {
+public class E {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int t = sc.nextInt();
