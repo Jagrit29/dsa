@@ -1,7 +1,9 @@
+package previous.abc379;
+
 
 import java.util.*;
 
-public class Main {
+public class C {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
@@ -81,3 +83,4 @@ public class Main {
 // 4 0 2 0 0
 
 //   3
+
