@@ -5,79 +5,60 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
-        int m = sc.nextInt();
-        int x[] = new int[m];
-        long a[] = new long[m];
+        int k = sc.nextInt();
+        String s = sc.next();
 
-        long arr[] = new long[n];
-        long stones = 0;
+        char arr[] = s.toCharArray();
 
-        for(int i=0;i<m;i++) {
-            x[i] = sc.nextInt();
-        }
+//        List<List<Integer>> blocks = new ArrayList<>();
+        List<Integer> kBlock = new ArrayList<>();
+        List<Integer> kfBlock = new ArrayList<>();
 
-        for(int i=0;i<m;i++) {
-            a[i] = sc.nextLong();
-            stones += a[i];
-        }
+        int start = -1;
+        int bc = 0;
 
-        for(int i=0;i<m;i++) {
-            arr[x[i]-1] = a[i];
-        }
-
-        if(stones != n) {
-            System.out.println(-1);
-            return;
-        }
-
-        long count = 0;
-        long extra = 0;
-        for(int i=0;i<m;i++) {
-            if(arr[i] == 0) {
-                if(extra == 0) {
-                    System.out.println(-1);
-                    return;
+        for(int i=0;i<s.length();i++) {
+            char ch = s.charAt(i);
+            if(ch=='1') {
+                if(start == -1) {
+                    start = i;
                 }
-                extra--;
-                count = (long)(count + extra);
             } else {
-                extra = extra + (arr[i] - 1);
-                if(extra > 0) {
-                    count  = (long)(count + extra);
+                if(start!=-1) {
+                    // means the block ended;
+                    bc++;
+                    if(bc == k-1) {
+                        kfBlock.add(start);
+                        kfBlock.add(i-1);
+                    } else if(bc == k) {
+                        kBlock.add(start);
+                        kBlock.add(i-1);
+                    }
+                    start = -1;
                 }
             }
         }
 
+        if(start!=-1) {
+            bc++;
+            if(bc == k) {
+                kBlock.add(start);
+                kBlock.add(s.length()-1);
+            }
+        }
 
+        // now I have all the blocks;
+        int end = kBlock.get(1);
+        start = kfBlock.get(1) + 1;
 
-        System.out.println(count);
+        while(start<kBlock.get(0)) {
+            arr[start] = '1';
+            arr[end] = '0';
+            end--;
+            start++;
+        }
 
+        System.out.println(new String(arr));
 
     }
 }
-//        for(int i=0;i<n;i++) {
-//            if(arr[i] == 0) {
-//                if(stack.isEmpty()) {
-//                    System.out.println(-1);
-//                    return;
-//                }
-//
-//                long take[] = stack.pop();
-//                count += (i - take[1]);
-//                take[0]--;
-//                if(take[0]!=0) {
-//                    stack.push(new long[]{take[0], take[1]});
-//                }
-//
-//            } else {
-//                long extra = arr[i] - 1;
-//                if(extra!=0) {
-//                    stack.push(new long[]{extra, i});
-//                }
-//            }
-//        }
-
-// 1 2 3 4 5
-// 4 0 2 0 0
-
-//   3
