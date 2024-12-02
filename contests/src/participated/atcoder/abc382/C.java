@@ -1,7 +1,9 @@
+package participated.atcoder.abc382;
+
 
 import java.util.*;
 
-public class Main {
+public class C {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
@@ -20,9 +22,9 @@ public class Main {
         }
 
         Arrays.sort(b, new Comparator<>(){
-           public int compare(int a[], int b[]) {
-               return a[0] - b[0];
-           };
+            public int compare(int a[], int b[]) {
+                return a[0] - b[0];
+            };
         });
 
         int low = 0;
@@ -75,3 +77,4 @@ public class Main {
 // 1 1 1
 // 4 2 1
 //
+
